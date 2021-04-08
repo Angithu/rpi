@@ -1,0 +1,34 @@
+
+use cmd to list camera device
+$ v4l2-ctl --list-devicesd
+
+use cmd to check camera proterties name
+$ tcam-ctrl -p
+
+for example.
+Exposure Time (us)
+Exposure Auto
+Gain Auto
+
+process startup flow
+$ python3 node_cap.py
+$ python3 node_algoManager.py
+$ sudo python3 node_modbus.py
+
+====================
+node_cap.py
+====================
+1. fetch image from camera by trigget signal of GPIO
+2. send image to datalake by mqtt with topic(CAMERA)
+Camera parameter setting by TIS.py
+
+====================
+node_algoManager.py
+====================
+1. update algorithm by algorithm.py with HMR module
+
+====================
+node_modbus.py
+====================
+send result out by modbus
+
